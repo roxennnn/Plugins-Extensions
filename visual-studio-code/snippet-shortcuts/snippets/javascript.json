@@ -1,0 +1,56 @@
+{
+  "Generate template React component": {
+    "prefix": "!componentNew",
+    "body": [
+      "import React from 'react';",
+      "$0",
+      "const styles = {",
+      "$0",
+      "};",
+      "$0",
+      "const ${1:ComponentName} = (props) => {",
+      "  return (",
+      "    <div>",
+      "    </div>",
+      "  );",
+      "};",
+      "$0",
+      "export default ${1:ComponentName};"
+    ]
+  },
+  "Generate template React-Native component": {
+    "prefix": "!nativeComponentNew",
+    "body": [
+      "import React from 'react';",
+      "import { View, StyleSheet, Text } from 'react-native';",
+      "$0",
+      "const ${1:ComponentName} = (props) => {",
+      "  return (",
+      "    <View>",
+      "      <Text></Text>",
+      "    </View>",
+      "  );",
+      "};",
+      "$0",
+      "const styles = StyleSheet.create({",
+      "  ",
+      "});",
+      "$0",
+      "export default ${1:ComponentName};"
+    ]
+  },
+  "Generate a new JS function": {
+  	"prefix": "!functionNew",
+  	"body": [
+  		"const ${1:FunctionName} = () => {",
+  		"  ",
+  		"};"
+  	]
+  }, 
+  "console.log() shortcut": {
+    "prefix": "cl",
+    "body": [
+      "console.log(${1});"
+    ]
+  }
+}

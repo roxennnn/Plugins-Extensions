@@ -1,0 +1,37 @@
+{
+    "name": "snippet-shortcuts",
+    "displayName": "VSCode Snippet Shortcuts",
+    "description": "Various shortcut snippets, for example templates for React components, JS function.",
+    "version": "1.2.0",
+    "publisher": "roxen",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/roxennnn/Plugins-Extensions"
+    },
+    "engines": {
+        "vscode": "^1.43.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascriptreact",
+                "path": "./snippets/javascript.json"
+            },
+            {
+                "language": "javascript",
+                "path": "./snippets/javascript.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./snippets/typescript.json"
+            },
+            {
+                "language": "typescriptreact",
+                "path": "./snippets/typescript.json"
+            }
+        ]
+    }
+}

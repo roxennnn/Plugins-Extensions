@@ -1,0 +1,12 @@
+[
+  {
+    "id": "sectioncommentlong",
+    "caption": "Add a section comment - Long",
+    "command": "add_section_comment_long"
+  },
+  {
+    "id": "sectioncommentshort",
+    "caption": "Add a section comment - Short",
+    "command": "add_section_comment_short"
+  },
+]
