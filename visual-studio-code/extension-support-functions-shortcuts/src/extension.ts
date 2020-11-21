@@ -26,14 +26,15 @@ const findLine = (document: vscode.TextDocument, toFind: string): number => {
   return found;
 };
 
-// Add style instance in styles variable; if the styles variable is not present, it will be added at the end
+// Add style reference in styles variable; if the styles variable is not present, it will be added at the end
 const addStyleToStyles = (
   editor: vscode.TextEditor,
   document: vscode.TextDocument,
-  addStyle: string
+  addStyle: string,
+  styleConst: string
 ): void => {
   editor.edit((editBuilder) => {
-    let lineNumber = findLine(document, 'const styles = StyleSheet.create({');
+    let lineNumber = findLine(document, styleConst);
     if (lineNumber < 0) {
       const input = document.getText();
       const splittedInput = input.split('\n');
@@ -45,17 +46,21 @@ const addStyleToStyles = (
         }
       });
       if (lineToInsertStyles >= 0) {
-        const toInsert = `const styles = StyleSheet.create({\n${addStyle}\n});\n\n`;
+        let toInsert = '';
+        if (styleConst === 'const styles = {') {
+          toInsert = `${styleConst}\n${addStyle}\n};\n\n`;
+        } else {
+          toInsert = `${styleConst}\n${addStyle}\n});\n\n`;
+        }
         editBuilder.insert(
           new vscode.Position(lineToInsertStyles, 0),
           toInsert
         );
         lineNumber = lineToInsertStyles;
-        console.log(lineNumber);
       } else {
         // Display error message
         vscode.window.showErrorMessage(
-          "Add StyleSheet failed: there is no StyleSheet variable names 'styles' nor a 'default export' component."
+          "Add Style failed: there is no constant named 'styles' nor a 'default export' component."
         );
       }
     } else {
@@ -97,7 +102,7 @@ const createSectionCommentReplacement = (
     distanceRightStars = ' '.repeat(tmp-1);
   } else {
     const tmpLeft = Math.round(distanceLenght);
-    const tmpRight = tmpLeft + 1;
+    const tmpRight = tmpLeft - 1;
     distanceLeft = ' '.repeat(tmpLeft);
     distanceRight = ' '.repeat(tmpRight);
     distanceRightStars = ' '.repeat(tmpLeft-2);
@@ -236,9 +241,9 @@ export function activate(context: vscode.ExtensionContext) {
 
   // Add StyleSheet
   //
-  // Add stylesheet reference into StyleSheet styels variable
-  const disposableStyle = vscode.commands.registerCommand(
-    'roxen.addStyleSheet',
+  // Add stylesheet reference into React Native StyleSheet styles variable
+  const disposableStyleSheet = vscode.commands.registerCommand(
+    'roxen.addStyleSheetReactNative',
     () => {
       // Get the active text editor
       const editor = vscode.window.activeTextEditor;
@@ -267,15 +272,65 @@ export function activate(context: vscode.ExtensionContext) {
           const newStyle = selectedLine.substring(startIndex + 1, selectionColumn);
           const addStyle = '\t' + newStyle + ': {\n\t\t\n\t},\n';
 
-          addStyleToStyles(editor, document, addStyle);
+          addStyleToStyles(editor, document, addStyle, 'const styles = StyleSheet.create({');
         } else { // style.name selected
           if (selected.substring(0, 7) === 'styles.') {
             const newStyle = selected.substring(7);
             const addStyle = '\t' + newStyle + ': {\n\t\t\n\t},\n';
-            addStyleToStyles(editor, document, addStyle);
+            addStyleToStyles(editor, document, addStyle, 'const styles = StyleSheet.create({');
           } else {
             vscode.window.showErrorMessage(
-              "Add StyleSheet failed: there no 'styles' instance selected."
+              "Add StyleSheet failed: there is no 'styles' instance selected."
+            );
+          }
+        }
+      }
+    }
+  );
+  context.subscriptions.push(disposableStyleSheet);
+
+  // Add style
+  //
+  // Add style reference into React style styles variable
+  const disposableStyle = vscode.commands.registerCommand(
+    'roxen.addStyleReact',
+    () => {
+      // Get the active text editor
+      const editor = vscode.window.activeTextEditor;
+
+      if (editor) {
+        const document = editor.document;
+
+        // Selection
+        const selection = editor.selection;
+        const selected = document.getText(selection);
+        const selectionPosition = selection.active;
+        const selectionLine = selectionPosition.line;
+
+        if (selected.length === 0) { // No selection
+          
+          // Get selection line
+          const documentText = document.getText();
+          let selectedLine = documentText.split('\n')[selectionLine];
+          const selectionColumn = selectionPosition.character;
+
+          // Get style name
+          let startIndex = selectionColumn;
+          while (selectedLine.charAt(startIndex) !== '.') {
+            startIndex -= 1;
+          }
+          const newStyle = selectedLine.substring(startIndex + 1, selectionColumn);
+          const addStyle = '\t' + newStyle + ': {\n\t\t\n\t},\n';
+
+          addStyleToStyles(editor, document, addStyle, 'const styles = {');
+        } else { // style.name selected
+          if (selected.substring(0, 7) === 'styles.') {
+            const newStyle = selected.substring(7);
+            const addStyle = '\t' + newStyle + ': {\n\t\t\n\t},\n';
+            addStyleToStyles(editor, document, addStyle, 'const styles = {');
+          } else {
+            vscode.window.showErrorMessage(
+              "Add Style failed: there is no 'styles' instance selected."
             );
           }
         }

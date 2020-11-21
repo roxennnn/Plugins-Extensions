@@ -3,6 +3,10 @@
 	"displayName": "VSCode Extension Support Shortcuts",
 	"description": "Support shortcuts in VSCode to various behaviours.",
 	"version": "0.1.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/roxennnn/Plugins-Extensions"
+	},
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -11,7 +15,8 @@
 	],
 	"activationEvents": [
 		"onCommand:roxen.useStateShortcut",
-		"onCommand:roxen.addStyleSheet",
+		"onCommand:roxen.addStyleSheetReactNative",
+		"onCommand:roxen.addStyleReact",
 		"onCommand:roxen.addSectionCommentLong",
 		"onCommand:roxen.addSectionCommentShort"
 
@@ -24,8 +29,12 @@
 				"title": "useState shortcut"
 			},
 			{
-				"command": "roxen.addStyleSheet",
-				"title": "Add StyleSheet"
+				"command": "roxen.addStyleSheetReactNative",
+				"title": "Add StyleSheet Reference - React Native"
+			},
+			{
+				"command": "roxen.addStyleReact",
+				"title": "Add Style Reference - React"
 			},
 			{
 				"command": "roxen.addSectionCommentLong",
