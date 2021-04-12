@@ -1,5 +1,9 @@
 # Plugins & Extensions for Popular Text Editors
 
+<p align="left">
+ <a href="https://github.com/roxennnn/Plugins-Extensions/blob/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/roxennnn/Plugins-Extensions"></a>
+</p>
+
 Plugins and extensions for popular text editors.
 
 ## Visual Studio Code
@@ -173,3 +177,6 @@ Plugins and extensions for Sublime-Text editor.
 Sublime-Text plugin to generate *section comments* with a shortcut. There are two types of sections comments: a *long* one (100-character long) and a *short* one (40-character long).
 
 The generated section comment can be used in Python or in programming languages with block comments Java-like.
+
+## License
+[MIT](https://github.com/roxennnn/Plugins-Extensions/blob/master/LICENSE)
