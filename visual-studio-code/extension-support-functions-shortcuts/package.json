@@ -1,70 +1,72 @@
 {
-	"name": "extension-support-function-shortcuts",
-	"displayName": "VSCode Extension Support Shortcuts",
-	"description": "Support shortcuts in VSCode to various behaviours.",
-	"version": "0.1.0",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/roxennnn/Plugins-Extensions"
-	},
-	"engines": {
-		"vscode": "^1.51.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:roxen.useStateShortcut",
-		"onCommand:roxen.addStyleSheetReactNative",
-		"onCommand:roxen.addStyleReact",
-		"onCommand:roxen.addSectionCommentLong",
-		"onCommand:roxen.addSectionCommentShort"
-
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "roxen.useStateShortcut",
-				"title": "useState shortcut"
-			},
-			{
-				"command": "roxen.addStyleSheetReactNative",
-				"title": "Add StyleSheet Reference - React Native"
-			},
-			{
-				"command": "roxen.addStyleReact",
-				"title": "Add Style Reference - React"
-			},
-			{
-				"command": "roxen.addSectionCommentLong",
-				"title": "Add Section Comment - Long"
-			},
-			{
-				"command": "roxen.addSectionCommentShort",
-				"title": "Add Section Comment - Short"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.51.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.9.0",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
-		"glob": "^7.1.6",
-		"mocha": "^8.1.3",
-		"typescript": "^4.0.2",
-		"vscode-test": "^1.4.0"
-	}
+  "name": "extension-support-function-shortcuts",
+  "displayName": "VSCode Extension Support Shortcuts",
+  "description": "Support shortcuts in VSCode to various behaviours.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roxennnn/Plugins-Extensions"
+  },
+  "engines": {
+    "vscode": "^1.51.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:roxen.useStateShortcut",
+    "onCommand:roxen.addStyleSheetReactNative",
+    "onCommand:roxen.addStyleReact",
+    "onCommand:roxen.addSectionCommentLong",
+    "onCommand:roxen.addSectionCommentShort"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "roxen.useStateShortcut",
+        "title": "useState shortcut"
+      },
+      {
+        "command": "roxen.addStyleSheetReactNative",
+        "title": "Add StyleSheet Reference - React Native"
+      },
+      {
+        "command": "roxen.addStyleReact",
+        "title": "Add Style Reference - React"
+      },
+      {
+        "command": "roxen.addSectionCommentLong",
+        "title": "Add Section Comment - Long"
+      },
+      {
+        "command": "roxen.addSectionCommentShort",
+        "title": "Add Section Comment - Short"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.51.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "eslint": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "typescript": "^4.0.2",
+    "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "npm": "^8.5.5"
+  }
 }

@@ -10,6 +10,14 @@ Plugins and extensions for popular text editors.
 Extensions and snippet shortcuts for Visual Studio Code editor.
 ### Extension Support Function Shortcuts
 
+#### Installation
+[https://code.visualstudio.com/api/working-with-extensions/publishing-extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+
+[https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-from-a-vsix)
+
+[https://www.npmjs.com/package/vsce](https://www.npmjs.com/package/vsce)
+#### Description
+
 **useState Shortcut**
 
 Starting from the last word written before the cursor position, replace the current line with the following. 
@@ -65,6 +73,10 @@ Generate *section comments* with a shortcut. There are two types of sections com
 The generated section comment can be used in Python or in programming languages with block comments Java-like.
 
 ### Snippet Shortcuts
+
+#### Installation
+[https://vscode-docs.readthedocs.io/en/stable/customization/userdefinedsnippets/](https://vscode-docs.readthedocs.io/en/stable/customization/userdefinedsnippets/)
+#### Description
 Code snippets are templates that make it easier to enter repeating code patterns, such as loops or conditional-statements.
 
 Hereafter, the implemented code snippets are shown. They are identified by their shortcuts
