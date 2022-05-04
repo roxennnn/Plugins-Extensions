@@ -1,0 +1,32 @@
+{
+  "Generate Python template setup": {
+    "prefix": "!pySetup",
+    "body": [
+      "from dslib import get_current_path",
+      "import os",
+      "import pandas as pd",
+      "from tqdm import tqdm",
+      "",
+      "if __name__ == \"__main__\":",
+      "\tCURRENT_PATH = get_current_path(__file__)",
+      "\tDATA_PATH = os.path.join(CURRENT_PATH, \"data\")",
+      "\t$0"
+    ]
+  },
+  "Read TSV": {
+    "prefix": "read_tsv",
+    "body": ["pd.read_csv(${1:file}, sep=\"\\t\")"]
+  },
+  "To TSV": {
+    "prefix": "to_tsv",
+    "body": [".to_csv(${1:file}, sep=\"\\t\", index=False)"]
+  },
+  "Pandas loop": {
+    "prefix": "for row",
+    "body": ["for row in tqdm(${1:df}.to_dict('records'):"]
+  },
+  "print() shortcut": {
+    "prefix": "pr",
+    "body": ["print(${1});"]
+  }
+}
